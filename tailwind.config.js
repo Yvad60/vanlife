@@ -14,6 +14,7 @@ export default {
         },
         "soft-dark": "#252525",
         "soft-light": "#AAAAAA",
+        "dark-green": "#115E59",
       },
       backgroundImage: {
         "home-bg": "url('/images/home-bg.webp')",

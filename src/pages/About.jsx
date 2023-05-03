@@ -6,7 +6,7 @@ const About = () => {
       <img
         src="/images/about-banner.webp"
         alt=""
-        className="h-[400px] object-cover object-top w-full"
+        className="h-[300px] md:h-[400px] object-cover object-top w-full"
       />
       <CenterContent>
         <h1 className="text-3xl font-extrabold md:text-5xl mt-10">
@@ -23,11 +23,11 @@ const About = () => {
             world on 4 wheels.
           </p>
         </div>
-        <div className="bg-orange-300 p-12 rounded my-14">
-          <h4 className="text-4xl max-w-[500px] font-bold">
+        <div className="bg-orange-300 p-8 md:p-12 rounded my-10 md:my-14">
+          <h4 className="text-2xl md:text-4xl max-w-[500px] font-bold">
             Your destination is waiting. Your van is ready.
           </h4>
-          <button className="px-12 py-4 mt-10 font-semibold rounded-lg md:text-lg bg-dark text-white hover:bg-soft-dark">
+          <button className="px-12 py-[10px] sm:py-4 mt-10 font-semibold rounded-lg md:text-lg bg-dark text-white hover:bg-soft-dark">
             Explore our vans
           </button>
         </div>

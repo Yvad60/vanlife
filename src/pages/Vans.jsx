@@ -20,9 +20,11 @@ const Vans = () => {
       <CenterContent>
         <h1 className="text-3xl font-bold mb-6">Explore our van options</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
-          {vans.map((van) => (
-            <VanCard {...van} key={van.id} />
-          ))}
+          {vans.length === 0 ? (
+            <h2 className="text-xl font-semibold">Loading...</h2>
+          ) : (
+            vans.map((van) => <VanCard {...van} key={van.id} />)
+          )}
         </div>
       </CenterContent>
     </div>

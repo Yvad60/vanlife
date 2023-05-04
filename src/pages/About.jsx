@@ -5,7 +5,7 @@ const About = () => {
     <div className="flex-1">
       <img
         src="/images/about-banner.webp"
-        alt=""
+        alt="banner"
         className="h-[300px] md:h-[400px] object-cover object-top w-full"
       />
       <CenterContent>

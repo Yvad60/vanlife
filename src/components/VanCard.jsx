@@ -4,7 +4,7 @@ import VanButton from "./VanButton";
 const VanCard = ({ imageUrl, name, price, type, id }) => {
   return (
     <Link to={`/vans/${id}`}>
-      <img src={imageUrl} alt="" className="h-[280px] w-full object-cover rounded" />
+      <img src={imageUrl} alt={name} className="h-[280px] w-full object-cover rounded" />
       <div className="flex justify-between mt-3">
         <h3 className="text-lg font-semibold">{name}</h3>
         <div className="text-right">

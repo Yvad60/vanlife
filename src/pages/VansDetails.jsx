@@ -26,12 +26,12 @@ const VansDetails = () => {
           <div className="relative">
             <img
               src={imageUrl}
-              alt=""
+              alt={name}
               className="w-full relative z-10 h-[400px] border-none object-contain py-1"
             />
             <img
               src={imageUrl}
-              alt=""
+              alt={name}
               className="w-full h-[400px] top-0 object-cover absolute blur"
             />
             <div className="mt-10">

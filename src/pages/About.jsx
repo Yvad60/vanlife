@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import CenterContent from "../components/layout/CenterContent";
 
 const About = () => {
@@ -27,9 +28,12 @@ const About = () => {
           <h4 className="text-2xl md:text-4xl max-w-[500px] font-bold">
             Your destination is waiting. Your van is ready.
           </h4>
-          <button className="px-12 py-[10px] sm:py-4 mt-10 font-semibold rounded-lg md:text-lg bg-dark text-white hover:bg-soft-dark">
+          <Link
+            to="/vans"
+            className="inline-block px-12 py-[10px] sm:py-4 mt-10 font-semibold rounded-lg md:text-lg bg-dark text-white hover:bg-soft-dark"
+          >
             Explore our vans
-          </button>
+          </Link>
         </div>
       </CenterContent>
     </div>

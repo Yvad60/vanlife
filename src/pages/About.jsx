@@ -3,12 +3,12 @@ import CenterContent from "../components/layout/CenterContent";
 const About = () => {
   return (
     <div className="flex-1">
-      <img
-        src="/images/about-banner.webp"
-        alt="banner"
-        className="h-[300px] md:h-[400px] object-cover object-top w-full"
-      />
       <CenterContent>
+        <img
+          src="/images/about-banner.webp"
+          alt="banner"
+          className="h-[300px] md:h-[400px] object-cover object-top w-full"
+        />
         <h1 className="text-3xl font-extrabold md:text-5xl mt-10">
           Don’t squeeze in a sedan when you could relax in a van.
         </h1>

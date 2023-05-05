@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import CenterContent from "../components/layout/CenterContent";
 
 const Home = () => {
@@ -13,9 +14,12 @@ const Home = () => {
             Add adventure to your life by joining the #vanlife movement. Rent the perfect van to
             make your perfect road trip.
           </p>
-          <button className="w-1/2 py-2 mt-5 font-semibold rounded md:py-3 lg:py-4 md:text-lg bg-orange-primary hover:bg-orange-700">
+          <Link
+            to="/vans"
+            className="inline-block text-center w-1/2 py-2 mt-5 font-semibold rounded md:py-3 lg:py-4 md:text-lg bg-orange-primary hover:bg-orange-700"
+          >
             Find your van
-          </button>
+          </Link>
         </div>
       </CenterContent>
     </div>

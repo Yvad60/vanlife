@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import VanButton from "../components/VanButton";
-import CenterContent from "../components/layout/CenterContent";
+import VanButton from "../../components/VanButton";
+import CenterContent from "../../components/layout/CenterContent";
 
 const VansDetails = () => {
   const { id } = useParams();

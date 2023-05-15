@@ -8,9 +8,9 @@ const About = () => {
         <img
           src="/images/about-banner.webp"
           alt="banner"
-          className="h-[300px] md:h-[400px] object-cover object-top w-full"
+          className="object-cover object-top w-full h-[300px] md:h-[400px]"
         />
-        <h1 className="text-3xl font-extrabold md:text-5xl mt-10">
+        <h1 className="mt-10 text-3xl font-extrabold md:text-5xl">
           Don’t squeeze in a sedan when you could relax in a van.
         </h1>
         <div className="text-lg">
@@ -24,13 +24,13 @@ const About = () => {
             world on 4 wheels.
           </p>
         </div>
-        <div className="bg-orange-300 p-8 md:p-12 rounded my-10 md:my-14">
-          <h4 className="text-2xl md:text-4xl max-w-[500px] font-bold">
+        <div className="p-8 my-10 bg-orange-300 rounded md:p-12 md:my-14">
+          <h4 className="text-2xl font-bold md:text-4xl max-w-[500px]">
             Your destination is waiting. Your van is ready.
           </h4>
           <Link
             to="/vans"
-            className="inline-block px-12 py-[10px] sm:py-4 mt-10 font-semibold rounded-lg md:text-lg bg-dark text-white hover:bg-soft-dark"
+            className="inline-block px-12 mt-10 font-semibold text-white rounded-lg py-[10px] sm:py-4 md:text-lg bg-dark hover:bg-soft-dark"
           >
             Explore our vans
           </Link>

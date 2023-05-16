@@ -3,9 +3,10 @@ import Layout from "./components/layout/Layout";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import Dashboard from "./pages/host/Dashboard";
-import HostLayout from "./pages/host/HostLayout";
 import Income from "./pages/host/Income";
+import HostLayout from "./pages/host/Layout";
 import Reviews from "./pages/host/Reviews";
+import HostVans from "./pages/host/Vans";
 import Vans from "./pages/vans/Vans";
 import VansDetails from "./pages/vans/VansDetails";
 
@@ -23,7 +24,8 @@ const App = () => {
               <Route index element={<Dashboard />} />
               <Route path="income" element={<Income />} />
               <Route path="reviews" element={<Reviews />} />
-              <Route path="vans" element={<Vans />} />
+              <Route path="vans" element={<HostVans />} />
+              <Route path="vans/:id" element={null} />
             </Route>
           </Route>
         </Routes>

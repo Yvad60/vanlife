@@ -9,7 +9,7 @@ const Layout = () => {
         <div className="flex gap-10 mt-3">
           {navlinks.map((link, index) => (
             <NavLink
-              to={link === "dashboard" ? "/host" : `/host/${link}`}
+              to={link === "dashboard" ? "." : link}
               key={index}
               end
               className={({ isActive }) =>

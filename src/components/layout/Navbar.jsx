@@ -9,7 +9,7 @@ const Navbar = () => {
           <Link to="/" className="text-2xl font-black leading-10 uppercase">
             #Vanlife
           </Link>
-          <nav className="flex text-lg gap-14">
+          <nav className="flex text-lg gap-6 md:gap-14">
             {["host", "about", "vans"].map((link, index) => (
               <NavLink
                 key={index}

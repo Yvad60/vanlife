@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import VanCard from "../../components/VanCard";
 import CenterContent from "../../components/layout/CenterContent";
 import "../../server";
 
 const Vans = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  console.log(searchParams.toString());
   const [vans, setVans] = useState([]);
 
   useEffect(() => {

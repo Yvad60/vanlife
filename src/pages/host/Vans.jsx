@@ -1,17 +1,13 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+
+export const loader = async () => {
+  const response = await fetch("/api/host/vans");
+  const data = await response.json();
+  return data.vans;
+};
 
 const Vans = () => {
-  const [hostVans, setHostVans] = useState([]);
-
-  useEffect(() => {
-    const fetchVans = async () => {
-      const response = await fetch("/api/host/vans");
-      const data = await response.json();
-      setHostVans(data.vans);
-    };
-    fetchVans();
-  }, []);
+  const hostVans = useLoaderData();
 
   return (
     <div className="mt-10">

@@ -1,20 +1,16 @@
-import { useEffect, useState } from "react";
-import { Link, NavLink, Outlet, useParams } from "react-router-dom";
+import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom";
 import VanButton from "../../components/VanButton";
 
-const VanDetails = () => {
-  const { id } = useParams();
-  const [van, setVan] = useState({});
-  const { imageUrl, name, price, type } = van;
+export const loader = async ({ params }) => {
+  const { id } = params;
+  const response = await fetch(`/api/vans/${id}`);
+  const data = await response.json();
+  return data.vans;
+};
 
-  useEffect(() => {
-    const fetchVan = async () => {
-      const response = await fetch(`/api/vans/${id}`);
-      const data = await response.json();
-      setVan(data.vans);
-    };
-    fetchVan();
-  }, [id]);
+const VanDetails = () => {
+  const van = useLoaderData();
+  const { imageUrl, name, price, type } = van;
 
   return (
     <div className="mt-8">

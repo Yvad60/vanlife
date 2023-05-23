@@ -14,13 +14,13 @@ import Dashboard from "./pages/host/Dashboard";
 import Income from "./pages/host/Income";
 import HostLayout from "./pages/host/Layout";
 import Reviews from "./pages/host/Reviews";
-import HostVanDetails from "./pages/host/VanDetails";
+import HostVanDetails, { loader as HostVanDetailsLoader } from "./pages/host/VanDetails";
 import HostVanInfo from "./pages/host/VanInfo";
 import HostVanPhotos from "./pages/host/VanPhotos";
 import HostVanPricing from "./pages/host/VanPricing";
-import HostVans from "./pages/host/Vans";
+import HostVans, { loader as HostVansLoader } from "./pages/host/Vans";
 import Vans, { loader as vansLoader } from "./pages/vans/Vans";
-import VansDetails from "./pages/vans/VansDetails";
+import VansDetails, { loader as VanDetailsLoader } from "./pages/vans/VansDetails";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -31,13 +31,13 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/about" element={<About />} />
           <Route path="/vans" element={<Vans />} loader={vansLoader} />
-          <Route path="/vans/:id" element={<VansDetails />} />
+          <Route path="/vans/:id" element={<VansDetails />} loader={VanDetailsLoader} />
           <Route path="/host" element={<HostLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="income" element={<Income />} />
             <Route path="reviews" element={<Reviews />} />
-            <Route path="vans" element={<HostVans />} />
-            <Route path="vans/:id" element={<HostVanDetails />}>
+            <Route path="vans" element={<HostVans />} loader={HostVansLoader} />
+            <Route path="vans/:id" element={<HostVanDetails />} loader={HostVanDetailsLoader}>
               <Route index element={<HostVanInfo />} />
               <Route path="pricing" element={<HostVanPricing />} />
               <Route path="photos" element={<HostVanPhotos />} />

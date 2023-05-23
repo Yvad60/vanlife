@@ -1,28 +1,24 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLoaderData, useLocation } from "react-router-dom";
 import VanButton from "../../components/VanButton";
 import CenterContent from "../../components/layout/CenterContent";
 
+export const loader = async ({ params }) => {
+  const { id } = params;
+  const response = await fetch(`/api/vans/${id}`);
+  const data = await response.json();
+  return data.vans;
+};
+
 const VansDetails = () => {
   const location = useLocation();
-  const { id } = useParams();
-  const [van, setVan] = useState({});
+  const van = useLoaderData();
 
   const { imageUrl, name, price, type, description } = van;
   const selectedType = location.state?.type || "all";
 
-  useEffect(() => {
-    const fetchVans = async () => {
-      const response = await fetch(`/api/vans/${id}`);
-      const data = await response.json();
-      setVan(data.vans);
-    };
-    fetchVans();
-  }, [id]);
-
   return (
     <div className="flex flex-col justify-center flex-1 mb-10">
-      <img src={imageUrl} alt={name} className="object-cover sm:hidden relative h-[400px]" />
+      <img src={imageUrl} alt={name} className="relative object-cover sm:hidden h-[400px]" />
       <CenterContent>
         {Object.keys(van).length === 0 ? (
           <h2 className="mt-5 text-2xl font-semibold">Loading...</h2>
@@ -35,11 +31,11 @@ const VansDetails = () => {
                 Back to {selectedType} vans
               </span>
             </Link>
-            <div className="flex flex-col sm:flex-row items-end gap-10 mt-5">
+            <div className="flex flex-col items-end gap-10 mt-5 sm:flex-row">
               <img
                 src={imageUrl}
                 alt={name}
-                className="flex-shrink-0 hidden sm:block rounded object-cover sm:w-1/2 relative h-[400px]"
+                className="relative flex-shrink-0 hidden object-cover rounded sm:block sm:w-1/2 h-[400px]"
               />
               <div className="mt-10 sm:mt-0">
                 <VanButton>{type}</VanButton>

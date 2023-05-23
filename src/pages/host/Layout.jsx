@@ -11,7 +11,7 @@ const Layout = () => {
             <NavLink
               to={link === "dashboard" ? "." : link}
               key={index}
-              end
+              end={link === "dashboard"}
               className={({ isActive }) =>
                 `capitalize hover:underline text-lg ${
                   isActive ? `font-medium underline ${isActive}` : ""

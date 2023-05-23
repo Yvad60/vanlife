@@ -1,24 +1,19 @@
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useLoaderData, useSearchParams } from "react-router-dom";
 import VanCard from "../../components/VanCard";
 import CenterContent from "../../components/layout/CenterContent";
 import "../../server";
 
+export const loader = async () => {
+  const response = await fetch("/api/varns");
+  const data = await response.json();
+  return data.vans;
+};
+
 const Vans = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [vans, setVans] = useState([]);
-
+  const vans = useLoaderData();
   const typeFilter = searchParams.get("type");
   const displayedVans = typeFilter ? vans.filter((van) => van.type === typeFilter) : vans;
-
-  useEffect(() => {
-    const fetchVans = async () => {
-      const response = await fetch("/api/vans");
-      const data = await response.json();
-      setVans(data.vans);
-    };
-    fetchVans();
-  }, []);
 
   return (
     <div className="flex-1 mt-8 mb-14">

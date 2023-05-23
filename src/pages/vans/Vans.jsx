@@ -4,7 +4,7 @@ import CenterContent from "../../components/layout/CenterContent";
 import "../../server";
 
 export const loader = async () => {
-  const response = await fetch("/api/varns");
+  const response = await fetch("/api/vans");
   const data = await response.json();
   return data.vans;
 };

@@ -8,6 +8,7 @@ import Layout from "./components/layout/Layout";
 import About from "./pages/About";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/host/Dashboard";
 import Income from "./pages/host/Income";
@@ -27,6 +28,7 @@ const App = () => {
       <Route element={<Layout />}>
         <Route errorElement={<Error />}>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/about" element={<About />} />
           <Route path="/vans" element={<Vans />} loader={vansLoader} />
           <Route path="/vans/:id" element={<VansDetails />} />

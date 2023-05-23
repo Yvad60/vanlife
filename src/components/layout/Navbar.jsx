@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import CenterContent from "./CenterContent";
+import userCircle from "/images/user-circle.png";
 
 const Navbar = () => {
   return (
@@ -9,7 +10,7 @@ const Navbar = () => {
           <Link to="/" className="text-2xl font-black leading-10 uppercase">
             #Vanlife
           </Link>
-          <nav className="flex text-lg gap-6 md:gap-14">
+          <nav className="flex items-center text-lg gap-6 md:gap-14">
             {["host", "about", "vans"].map((link, index) => (
               <NavLink
                 key={index}
@@ -21,6 +22,9 @@ const Navbar = () => {
                 {link}
               </NavLink>
             ))}
+            <NavLink to="/login">
+              <img className="w-9" src={userCircle} alt="user circle icon" />
+            </NavLink>
           </nav>
         </div>
       </CenterContent>

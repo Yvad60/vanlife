@@ -16,7 +16,7 @@ const Home = () => {
           </p>
           <Link
             to="/vans"
-            className="inline-block text-center w-1/2 py-2 mt-5 font-semibold rounded md:py-3 lg:py-4 md:text-lg bg-orange-primary hover:bg-orange-700"
+            className="inline-block w-1/2 py-2 mt-5 font-semibold text-center rounded md:py-3 lg:py-4 md:text-lg bg-orange-primary hover:bg-orange-700"
           >
             Find your van
           </Link>

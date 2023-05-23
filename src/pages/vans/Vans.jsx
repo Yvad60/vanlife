@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import VanCard from "../components/VanCard";
-import CenterContent from "../components/layout/CenterContent";
-import "../server";
+import VanCard from "../../components/VanCard";
+import CenterContent from "../../components/layout/CenterContent";
+import "../../server";
 
 const Vans = () => {
   const [vans, setVans] = useState([]);

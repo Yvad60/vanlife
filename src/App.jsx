@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import About from "./pages/About";
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/host/Dashboard";
 import Income from "./pages/host/Income";
 import HostLayout from "./pages/host/Layout";
@@ -35,6 +36,7 @@ const App = () => {
                 <Route path="photos" element={<HostVanPhotos />} />
               </Route>
             </Route>
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import VanCard from "../../components/VanCard";
 import CenterContent from "../../components/layout/CenterContent";
 import "../../server";
 
 const Vans = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [vans, setVans] = useState([]);
+
+  const typeFilter = searchParams.get("type");
+  const displayedVans = typeFilter ? vans.filter((van) => van.type === typeFilter) : vans;
 
   useEffect(() => {
     const fetchVans = async () => {
@@ -18,12 +23,30 @@ const Vans = () => {
   return (
     <div className="flex-1 mt-8 mb-14">
       <CenterContent>
-        <h1 className="text-3xl font-bold mb-6">Explore our van options</h1>
+        <h1 className="mb-6 text-3xl font-bold">Explore our van options</h1>
+        <div className="flex items-center gap-6 my-8">
+          {["rugged", "simple", "luxury"].map((type, index) => (
+            <button
+              key={index}
+              onClick={() => setSearchParams({ type })}
+              className={`px-6 py-2 capitalize  rounded ${
+                type === typeFilter ? "bg-orange-300" : "bg-orange-100"
+              }`}
+            >
+              {type}
+            </button>
+          ))}
+          {typeFilter && (
+            <button onClick={() => setSearchParams({})} className="underline capitalize rounded">
+              Clear filters
+            </button>
+          )}
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
           {vans.length === 0 ? (
             <h2 className="text-xl font-semibold">Loading...</h2>
           ) : (
-            vans.map((van) => <VanCard {...van} key={van.id} />)
+            displayedVans.map((van) => <VanCard {...van} key={van.id} />)
           )}
         </div>
       </CenterContent>

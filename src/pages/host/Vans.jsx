@@ -1,6 +1,8 @@
 import { Link, useLoaderData } from "react-router-dom";
+import { requireAuth } from "../../utils/auth";
 
 export const loader = async () => {
+  requireAuth();
   const response = await fetch("/api/host/vans");
   const data = await response.json();
   return data.vans;

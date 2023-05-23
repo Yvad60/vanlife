@@ -2,8 +2,10 @@ import { useLoaderData, useSearchParams } from "react-router-dom";
 import VanCard from "../../components/VanCard";
 import CenterContent from "../../components/layout/CenterContent";
 import "../../server";
+import { requireAuth } from "../../utils/auth";
 
 export const loader = async () => {
+  requireAuth();
   const response = await fetch("/api/vans");
   const data = await response.json();
   return data.vans;
@@ -38,11 +40,9 @@ const Vans = () => {
           )}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
-          {vans.length === 0 ? (
-            <h2 className="text-xl font-semibold">Loading...</h2>
-          ) : (
-            displayedVans.map((van) => <VanCard {...van} key={van.id} />)
-          )}
+          {displayedVans.map((van) => (
+            <VanCard {...van} key={van.id} />
+          ))}
         </div>
       </CenterContent>
     </div>

@@ -1,5 +1,5 @@
 const CenterContent = ({ children }) => {
-  return <div className="mx-auto max-w-5xl w-11/12">{children}</div>;
+  return <div className="w-11/12 max-w-5xl mx-auto">{children}</div>;
 };
 
 export default CenterContent;

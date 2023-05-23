@@ -10,7 +10,7 @@ const VanButton = ({ children }) => {
 
   return (
     <button
-      className={`px-5 py-[6px] mt-1 capitalize font-medium text-light rounded ${setBgClass()}`}
+      className={`px-5 mt-1 font-medium capitalize rounded py-[6px] text-light ${setBgClass()}`}
     >
       {children}
     </button>

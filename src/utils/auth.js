@@ -1,6 +1,6 @@
 import { redirect } from "react-router-dom";
 
-export const requireAuth = () => {
+export const requireAuth = async () => {
   const isLoggedIn = false;
-  if (!isLoggedIn) redirect("/login");
+  if (!isLoggedIn) throw redirect("/login?message=You must login first");
 };

@@ -1,7 +1,9 @@
 import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom";
 import VanButton from "../../components/VanButton";
+import { requireAuth } from "../../utils/auth";
 
 export const loader = async ({ params }) => {
+  await requireAuth();
   const { id } = params;
   const response = await fetch(`/api/vans/${id}`);
   const data = await response.json();

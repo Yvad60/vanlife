@@ -1,10 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+
+export const loader = ({ request }) => {
+  const message = new URL(request.url).searchParams.get("message");
+  return message;
+};
 
 const Login = () => {
+  const message = useLoaderData();
+
   return (
     <div className="flex-1 flex flex-col justify-center items-center">
       <h1 className="text-3xl font-semibold">Sign in to your account</h1>
-      <form className="flex flex-col w-[600px] mt-12 max-w-4xl border-2 rounded-lg overflow-hidden">
+      {message && <p className="text-red-400 mt-6 text-lg">{message}</p>}
+      <form className="flex flex-col w-[600px] mt-6 max-w-4xl border-2 rounded-lg overflow-hidden">
         <input
           type="email"
           name=""

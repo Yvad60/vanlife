@@ -2,6 +2,7 @@ import { useRouteError } from "react-router-dom";
 
 const Error = () => {
   const error = useRouteError();
+  console.log(error);
 
   return (
     <div className="flex-1 flex flex-col justify-center items-center">

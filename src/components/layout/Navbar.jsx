@@ -1,8 +1,17 @@
-import { Link, NavLink } from "react-router-dom";
+import { useState } from "react";
+import { Link, NavLink, redirect } from "react-router-dom";
 import CenterContent from "./CenterContent";
 import userCircle from "/images/user-circle.png";
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(() => localStorage.getItem("isLoggedIn"));
+
+  const logout = () => {
+    localStorage.removeItem("isLoggedIn");
+    setIsLoggedIn(false);
+    redirect("/");
+  };
+
   return (
     <header className="sticky top-0 z-50 flex-grow-0 shadow bg-light">
       <CenterContent>
@@ -22,9 +31,15 @@ const Navbar = () => {
                 {link}
               </NavLink>
             ))}
-            <NavLink to="/login">
-              <img className="w-9" src={userCircle} alt="user circle icon" />
-            </NavLink>
+            {!isLoggedIn ? (
+              <NavLink to="/login">
+                <img className="w-9" src={userCircle} alt="user circle icon" />
+              </NavLink>
+            ) : (
+              <h4 onClick={logout} className="text-lg text-red-500 cursor-pointer font-medium">
+                Logout
+              </h4>
+            )}
           </nav>
         </div>
       </CenterContent>

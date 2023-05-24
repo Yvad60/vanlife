@@ -2,10 +2,8 @@ import { useLoaderData, useSearchParams } from "react-router-dom";
 import VanCard from "../../components/VanCard";
 import CenterContent from "../../components/layout/CenterContent";
 import "../../server";
-import { requireAuth } from "../../utils/auth";
 
 export const loader = async () => {
-  requireAuth();
   const response = await fetch("/api/vans");
   const data = await response.json();
   return data.vans;

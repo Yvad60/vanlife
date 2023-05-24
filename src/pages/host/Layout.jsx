@@ -1,5 +1,10 @@
 import { NavLink, Outlet } from "react-router-dom";
 import CenterContent from "../../components/layout/CenterContent";
+import { requireAuth } from "../../utils/auth";
+
+export const loader = async ({ request }) => {
+  await requireAuth(request);
+};
 
 const Layout = () => {
   const navlinks = ["dashboard", "income", "vans", "reviews"];

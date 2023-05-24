@@ -1,24 +1,24 @@
-import { useLoaderData, useSearchParams } from "react-router-dom";
+import { Suspense } from "react";
+import { Await, defer, useLoaderData, useSearchParams } from "react-router-dom";
 import VanCard from "../../components/VanCard";
 import CenterContent from "../../components/layout/CenterContent";
 import "../../server";
+import { getVans } from "../../utils/api";
 
 export const loader = async () => {
-  const response = await fetch("/api/vans");
-  const data = await response.json();
-  return data.vans;
+  const vansPromise = getVans();
+  return defer({ vans: vansPromise });
 };
 
 const Vans = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const vans = useLoaderData();
+  const vansPromise = useLoaderData();
   const typeFilter = searchParams.get("type");
-  const displayedVans = typeFilter ? vans.filter((van) => van.type === typeFilter) : vans;
 
-  return (
-    <div className="flex-1 mt-8 mb-14">
-      <CenterContent>
-        <h1 className="mb-6 text-3xl font-bold">Explore our van options</h1>
+  const renderVans = (vans) => {
+    const displayedVans = typeFilter ? vans.filter((van) => van.type === typeFilter) : vans;
+    return (
+      <>
         <div className="flex items-center gap-6 my-8">
           {["rugged", "simple", "luxury"].map((type, index) => (
             <button
@@ -42,6 +42,17 @@ const Vans = () => {
             <VanCard {...van} key={van.id} />
           ))}
         </div>
+      </>
+    );
+  };
+
+  return (
+    <div className="flex-1 mt-8 mb-14">
+      <CenterContent>
+        <h1 className="mb-6 text-3xl font-bold">Explore our van options</h1>
+        <Suspense fallback={<h1 className="mt-4 text-lg font-semibold">Loading vans...</h1>}>
+          <Await resolve={vansPromise.vans}>{renderVans}</Await>
+        </Suspense>
       </CenterContent>
     </div>
   );

@@ -9,8 +9,8 @@ export const loader = async ({ request }) => {
 const Layout = () => {
   const navlinks = ["dashboard", "income", "vans", "reviews"];
   return (
-    <div>
-      <CenterContent>
+    <div className="flex-1 flex flex-col">
+      <CenterContent className="flex-1 flex flex-col">
         <div className="flex gap-10 mt-3">
           {navlinks.map((link, index) => (
             <NavLink

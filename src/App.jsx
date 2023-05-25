@@ -32,8 +32,8 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/vans" element={<Vans />} loader={vansLoader} />
           <Route path="/vans/:id" element={<VansDetails />} loader={vanDetailsLoader} />
-          <Route path="/host" element={<HostLayout />}>
-            <Route index element={<Dashboard />} loader={hostLayoutLoader} />
+          <Route path="/host" element={<HostLayout />} loader={hostLayoutLoader}>
+            <Route index element={<Dashboard />} loader={hostVansLoader} />
             <Route path="income" element={<Income />} />
             <Route path="reviews" element={<Reviews />} />
             <Route path="vans" element={<HostVans />} loader={hostVansLoader} />

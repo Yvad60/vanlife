@@ -1,13 +1,13 @@
 import { Suspense } from "react";
 import { Await, Link, NavLink, Outlet, defer, useLoaderData } from "react-router-dom";
 import VanButton from "../../components/VanButton";
-import { getSingleHostVan } from "../../utils/api";
+import { getSingleVan } from "../../utils/api";
 import { requireAuth } from "../../utils/auth";
 
 export const loader = async ({ params, request }) => {
   await requireAuth(request);
   const { id } = params;
-  const vanPromise = getSingleHostVan(id);
+  const vanPromise = getSingleVan(id);
   return defer({ van: vanPromise });
 };
 
